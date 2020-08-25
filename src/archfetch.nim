@@ -27,7 +27,7 @@ for n, str in logo:
         of "hostname": result = &"{color}Hostname{white}: " & execProcess("uname -n")[0..^2]
         of "kernel": result = &"{color}Kernel{white}: " & execProcess("uname -r")[0..^2]
         of "packages": result = &"{color}Packages{white}: " & execProcess("pacman -Q | wc -l")[0..^2]
-        of "uptime": result = &"{color}Uptime{white}: " & execProcess("uptime").split(" ")[1]
+        of "uptime": result = &"{color}Uptime{white}: " & execProcess("uptime -p")[0..^2]
         of "ram":
             var temp = execProcess("free --mega").split("\n")[1].split(":           ")[1].split("        ")
             result = &"{color}RAM{white}: {temp[1]}/{temp[0]} MB"
